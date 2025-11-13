@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel CETEP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#0057A0">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/icon-192x192.png') }}">
+</head>
+<body>
+
+    <img src="{{ url_for('static', filename='images/brasao-bahia.png') }}" alt="Brasão da Bahia" class="watermark">
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-logos">
+             <img src="{{ url_for('static', filename='images/logo-eptec.png') }}" alt="Logo do EPTEC Bahia" class="logo-eptec">  
+            </div>
+            <div class="header-title">
+                <h1>Painel Digital CETEP</h1>
+                <p>Horários e Avisos</p>
+            </div>
+           <img src="{{ url_for('static', filename='images/bandeira-bahia.jpg') }}" alt="Bandeira da Bahia" class="logo-signature"> 
+        </header>
+
+        <nav class="app-tabs">
+            <button class="tab-link active" data-tab="inicio">Início</button>
+            <button class="tab-link" data-tab="horarios">Horários</button>
+            <button class="tab-link" data-tab="avisos">Avisos</button>
+        </nav>
+
+        <main class="app-content">
+
+            <section id="inicio" class="tab-content active">
+                <div class="welcome-card">
+                    <h2>Bem-vindo(a) ao seu Painel Digital!</h2>
+                    <p>Acesse horários e avisos importantes de forma rápida e confiável, mesmo sem internet.</p>
+                    <img src="{{ url_for('static', filename='images/fachada-cetep.jpg') }}" alt="Fachada do Colégio" class="welcome-image">
+                </div>
+            </section>
+
+            <section id="horarios" class="tab-content">
+                <div class="content-card">
+                    <h2>Consulte seu Horário</h2>
+                    <div class="filter-controls">
+                        <select id="select-grade">
+                            <option value="">Escolha a Série</option>
+                            <option value="1a">1ª Série</option>
+                            <option value="2a">2ª Série</option>
+                            <option value="3a">3ª Série</option>
+                        </select>
+                        <select id="select-course">
+                            <option value="">Escolha o Curso</option>
+                        </select>
+                    </div>
+                    <div id="schedule-display" class="hidden">
+                        <h3>Horário para: <span id="schedule-title"></span></h3>
+                        <div id="schedule-grid" class="schedule-grid">
+                            <p class="placeholder">Selecione a série e o curso para ver o horário.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="avisos" class="tab-content">
+                <div class="content-card">
+                    <h2>Mural de Avisos</h2>
+                    <div id="announcement-list" class="announcement-list">
+                        <p class="placeholder">Nenhum aviso no momento.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
